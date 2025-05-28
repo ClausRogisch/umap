@@ -258,6 +258,7 @@ const EDIT_BAR_TEMPLATE = `
     <li data-ref="multipolygon" hidden>
       <button type="button" title="${translate('Add a polygon to the current multi')}"><i class="icon icon-24 icon-multipolygon"></i></button>
     </li>
+    <li data-ref="rectanglepolygonat"><button type="button" data-getstarted><i class="icon icon-24 icon-rectanglepolygonat"></i></button></li>
     <hr>
     <li data-ref="caption" hidden><button data-getstarted type="button" title="${translate('Edit map name and caption')}"><i class="icon icon-24 icon-caption"></i></button></li>
     <li data-ref="import" hidden><button type="button"><i class="icon icon-24 icon-upload"></i></button></li>
@@ -286,6 +287,7 @@ export class EditBar extends WithTemplate {
     this._onClick('multiline', () => this._umap.editedFeature.ui.editor.newShape())
     this._onClick('polygon', () => this._leafletMap.editTools.startPolygon())
     this._onClick('multipolygon', () => this._umap.editedFeature.ui.editor.newShape())
+    this._onClick('rectanglepolygonat', () => this._leafletMap.editTools.startRectanglePolygonAt())
     this._onClick('caption', () => this._umap.editCaption())
     this._onClick('import', () => this._umap.importer.open())
     this._onClick('layers', () => this._umap.editDatalayers())
@@ -297,6 +299,7 @@ export class EditBar extends WithTemplate {
     this._addTitle('marker', 'DRAW_MARKER')
     this._addTitle('polyline', 'DRAW_LINE')
     this._addTitle('polygon', 'DRAW_POLYGON')
+    this._addTitle('rectanglepolygonat', 'DRAW_RECTANGLEPOLYGONAT')
     this._leafletMap.on('seteditedfeature', () => this.redraw())
   }
 

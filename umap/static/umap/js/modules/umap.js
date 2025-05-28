@@ -392,6 +392,12 @@ export default class Umap {
             action: () => this._leafletMap.editTools.startPolygon(),
           })
         }
+        if (this.properties.enablePolylineDraw) {
+          items.push({
+            label: this.help.displayLabel('DRAW_RECTANGLEPOLYGONAT'),
+            action: () => this._leafletMap.editTools.startPolygonAt(),
+          })
+        }
         if (this.properties.enablePolygonDraw) {
           items.push({
             label: this.help.displayLabel('DRAW_LINE'),
@@ -572,6 +578,10 @@ export default class Umap {
       'Ctrl+p': {
         if: () => this.editEnabled,
         do: () => this._leafletMap.editTools.startPolygon(),
+      },
+      'Ctrl+r': {
+        if: () => this.editEnabled,
+        do: () => this._leafletMap.editTools.startRectanglePolygonAt(),
       },
       'Ctrl+l': {
         if: () => this.editEnabled,
